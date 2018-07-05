@@ -99,6 +99,7 @@ function Raven() {
   // Raven can run in contexts where there's no document (react-native)
   this._hasDocument = !isUndefined(_document);
   this._hasNavigator = !isUndefined(_navigator);
+  this._isWeapp = wx && wx.getNetworkType;
   this._lastCapturedException = null;
   this._lastData = null;
   this._lastEventId = null;
@@ -838,7 +839,7 @@ Raven.prototype = {
     // NOTE: `event` is a native browser thing, so let's avoid conflicting wiht it
     var evt, key;
 
-    if (!this._hasDocument) return;
+    if (!this._hasDocument || _isWeapp) return;
 
     options = options || {};
 
