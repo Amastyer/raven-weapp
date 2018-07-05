@@ -782,7 +782,7 @@ Raven.prototype = {
     // NOTE: `event` is a native browser thing, so let's avoid conflicting wiht it
     var evt, key;
 
-    if (!this._hasDocument || _isWeapp) return;
+    if (!this._hasDocument || this._isWeapp) return;
 
     options = options || {};
 
